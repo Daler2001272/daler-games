@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulyator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calc-container {
+      background-color: #1f1f1f;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00ffcc55;
+      text-align: center;
+      width: 300px;
+    }
+
+    input {
+      width: 90%;
+      font-size: 24px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      text-align: right;
+      margin-bottom: 15px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background-color: #00ffcc;
+      color: #121212;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #00ccb0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calc-container">
+    <h2>🧮 Kalkulyator</h2>
+    <input type="text" id="display" disabled>
+    <div class="buttons">
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+      <button onclick="append('/')">÷</button>
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button onclick="append('*')">×</button>
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button onclick="append('-')">−</button>
+      <button onclick="append('0')">0</button>
+      <button onclick="append('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="append('+')">+</button>
+      <button onclick="clearDisplay()" style="grid-column: span 4; background-color: #ff5252;">Tozalash</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById("display");
+
+    function append(value) {
+      display.value += value;
+    }
+
+    function clearDisplay() {
+      display.value = "";
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch {
+        display.value = "Xato!";
+      }
+    }
+  </script>
+
+</body>
+</html>
